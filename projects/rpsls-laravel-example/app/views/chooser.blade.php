@@ -1,6 +1,15 @@
 <div style="width:100%;text-align:center;">
+    @if (Session::has('error'))
+
+    @foreach (Session::get('error')->all(':message') as $message)
+    {{ $message }}
+    @endforeach
+    @endif
 @if (isset($yourChoice))
-    <span style="text-align:center;font-weight:bold;font-size:22px;">You {{ $results }}!<br>You chose {{ $yourChoice }}, I chose {{ $myChoice }}</span> <br>
+    <span style="text-align:center;font-weight:bold;font-size:22px;">
+    You {{ $results }}!<br>You chose {{ $yourChoice }}, I chose {{ $myChoice }}
+    </span>
+    <br>
 
 Play again!
 @endif
