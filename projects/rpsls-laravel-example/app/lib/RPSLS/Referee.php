@@ -41,7 +41,7 @@ class Referee {
                 'lizard' => 'lose',
                 'spock' => 'draw',
             ],
-        ];
+    ];
         $result = $rules[$throw1][$throw2];
         return $result;
     }

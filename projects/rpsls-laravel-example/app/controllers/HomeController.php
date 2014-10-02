@@ -2,6 +2,13 @@
 
 class HomeController extends BaseController {
 
+    var $actionLog, $actionLogTransformer;
+
+    public function __construct(ActionLogInterface $actionLog, TransformerInterface $actionLogTransformer)
+    {
+        $this->actionLog = $actionLog;
+        $this->actionLogTransformer = $actionLogTransformer;
+    }
 	/*
 	|--------------------------------------------------------------------------
 	| Default Home Controller
@@ -31,15 +38,19 @@ class HomeController extends BaseController {
             $player   = new \RPSLS\Player();
             $myAction = $player->chooseAction();
             $results  = $judge->judgeResults($action, $myAction);
+            $record = $this->actionLog->create(
+                $this->actionLogTransformer->transform([
+                        'user_action'   => $action,
+                        'ai_action'     => $myAction,
+                        'results'       => $results,
+                    ])
+            );
             return View::make('chooser')->with(
                 ['results' => $results, 'yourChoice' => $action, 'myChoice' => $myAction]
             );
         }
-        else
-        {
-            Session::flash('error', $validator->messages());
-            return Redirect::route('chooser');
-        }
+        Session::flash('error', $validator->messages());
+        return Redirect::route('chooser');
     }
 
 }

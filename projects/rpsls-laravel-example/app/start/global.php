@@ -79,3 +79,5 @@ App::down(function()
 */
 
 require app_path().'/filters.php';
+App::bind('ActionLogInterface', Config::get('app.bindings.ActionLogInterface'));
+App::bind('TransformerInterface', Config::get('app.bindings.ActionLogTransformer'));
