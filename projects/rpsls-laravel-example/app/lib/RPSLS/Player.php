@@ -1,19 +1,23 @@
 <?php
 
-namespace RPSLS;
+	namespace RPSLS;
 
-class Player {
+	class Player {
 
-    var $options = [
-    'rock',
-    'paper',
-    'scissors',
-    'lizard',
-    'spock',
-    ];
+		var $options = [
+			'rock',
+			'paper',
+			'scissors',
+			'lizard',
+			'spock',
+		];
 
-    public function chooseAction()
-    {
-        return $this->options[array_rand($this->options)];
-    }
-}
+
+		/**
+		 * Get the Player's action
+		 */
+		public function chooseAction()
+		{
+			return $this->options[array_rand($this->options)];
+		}
+	}
