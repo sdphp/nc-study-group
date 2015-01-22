@@ -1,7 +1,21 @@
 <?php
 
 interface ActionLogInterface {
-    public function all();
-    public function find($id);
-    public function create($data);
+
+	/**
+	 * Return all logged actions
+	 */
+	public function all();
+
+	/**
+	 * Return specific logged action
+	 * @param $id integer
+	 */
+	public function find($id);
+
+	/**
+	 * Create a logged action
+	 * @param $data array
+	 */
+	public function create(array $data);
 }

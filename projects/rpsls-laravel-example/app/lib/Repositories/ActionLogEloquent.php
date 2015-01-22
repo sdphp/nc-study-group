@@ -2,15 +2,27 @@
 
 class ActionLogEloquent implements ActionLogInterface
 {
-    public function all(){
+
+	/**
+	 * Return all logged actions
+	 */
+	public function all(){
         return ActionLog::all();
     }
 
-    public function find($id){
+	/**
+	 * Return specific logged action
+	 * @param $id integer
+	 */
+	public function find($id){
         return ActionLog::find($id);
     }
 
-    public function create($data)
+	/**
+	 * Create a logged action
+	 * @param $data array
+	 */
+	public function create(array $data)
     {
         $record = new ActionLog;
         $record->user_action = $data['user_action'];
